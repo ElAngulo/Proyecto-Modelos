@@ -1,0 +1,17 @@
+install.packages("MVA")
+library("MVA")
+install.packages("mvtnorm")
+install.packages("readr")
+library(readr)
+## Instalamos las paqueterias principales para el desarrollo del trabajo
+
+file.choose()
+## Seleccionamos la base de datos previamente guardada
+
+## Cambiar la ruta al abrir en otro dispositivo
+rutabase =  "C:\\Users\\angel\\Documents\\ANGEL\\10mo SEM\\MYS\\PROYECTO\\Poblacion.csv"
+base = read.csv(rutabase)
+View(base)
+## Visualizamos la base de datos
+
+## 
