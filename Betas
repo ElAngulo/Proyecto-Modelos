@@ -1,0 +1,83 @@
+# Simular Beta
+
+a=7^5
+m=2^31-1
+S0=200003173   #Candidatos
+S1=200003179   #Aceptación o Rechazo
+
+# Simular 10000 uniformes candidatos
+n=10000
+vec_S0=rep(0,n+1)
+vec_S0[1]=S0
+for(i in 2:(n+1)){
+  vec_S0[i]=as.double(a*vec_S0[i-1])%%m
+}
+vec_S0=vec_S0/m
+vec_S0<-vec_S0[-1]
+plot(vec_S0)
+hist(vec_S0)
+
+# Simular 10000 uniformes aceptacion rechazo
+n=10000
+vec_S1=rep(0,n+1)
+vec_S1[1]=S1
+for(i in 2:(n+1)){
+  vec_S1[i]=as.double(a*vec_S1[i-1])%%m
+}
+vec_S1<-vec_S1[-1]
+vec_S1=vec_S1/m
+plot(vec_S1)
+hist(vec_S1)
+
+# Distribución Beta
+f_beta<- function(x){
+  20*x*(1-x)^3
+}
+plot(f_beta)
+c=135/64   # Es el maximo de la función beta y se alcanza en 1/4
+points(.25,c, pch=18)
+
+
+# Simular 1000 Betas
+ # Sustituir valores en la funcion
+
+vec_S0[1:5]
+vec_S1[1:5]
+
+Nor=9000
+M<-matrix(ncol=4,nrow = Nor,rep(0,4*Nor))
+colnames(M)<-c("Ucandidato","f(u)/c","Uaceptacion","Comparar")
+
+M[1,]
+M[1,1]<-vec_S0[1]
+M[1,2]<-f_beta(vec_S0[1])/c
+M[1,3]<-vec_S1[1]
+M[1,4]<-M[1,3]<=M[1,2]
+
+M[1,]
+cont=0
+for (i in 1:Nor) {
+  M[i,1]<-vec_S0[i]
+  M[i,2]<-f_beta(vec_S0[i])/c
+  M[i,3]<-vec_S1[i]
+  M[i,4]<-M[i,3]<=M[i,2]
+  #if (cont==1000){
+   # break 
+  #} 
+  #cont=cont+M[i,4]
+}
+#sum(M[2,4]+M[3,4]) # Aceptados que hay
+acep=which(M[,4]==1) # Dice cuales son los aceptados
+acep
+length(acep)
+vacep=M[acep,1]
+plot(vacep)
+hist(vacep)
+betasn=vacep[1:1000]
+plot(betasn)
+hist(betasn)
+
+integral<- function(x){
+  sin(abs(1/x))
+}
+plot(integral)
