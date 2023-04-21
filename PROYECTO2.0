@@ -1,0 +1,133 @@
+install.packages("MVA")
+library("MVA")
+install.packages("mvtnorm")
+install.packages("readr")
+library(readr)
+## Instalamos las paqueterias principales para el desarrollo del trabajo
+
+file.choose()
+## Seleccionamos la base de datos previamente guardada
+
+## Cambiar la ruta al abrir en otro dispositivo
+rutabase =  "C:\\Users\\angel\\Documents\\ANGEL\\10mo SEM\\MYS\\PROYECTO\\Poblacion.csv"
+base = read.csv(rutabase)
+View(base)
+## Visualizamos la base de datos
+
+
+## EDO. AGUASCALIENTES
+
+#i
+## simular 320 000 i y j
+a=7^5
+m=2^31-1
+S0=200003173   # Simulacion i
+S1=202003179   # Simulacion j
+n=10000
+
+# Simular  uniformes
+vec_S0=rep(0,n+1)
+vec_S0[1]=S0
+for(i in 2:(n+1)){
+  vec_S0[i]=as.double(a*vec_S0[i-1])%%m
+}
+vec_S0=vec_S0/m
+vec_S0<-vec_S0[-1]
+plot(vec_S0)
+hist(vec_S0)
+
+## SELECCIONAR i 
+
+if(vec_S0[1]<.5) {
+  "i_1"
+} else {
+  "i_2"
+  
+}
+
+## ESTIMAR POBLACION 2023
+
+((1+0.022966424)^3)*(1425607)
+
+
+COMO SELECCIONAR I?
+COMO ESTIMAR POBLACION 2023 
+COMO SELECCIONAR J
+COMO ESTIMAR LA MIGRACION 
+COMO HACERLO 10 MIL VECES 
+COMO HACERLO PARA LOS 32 ESTADOS 
+
+
+# for para cada estado, para que las semillas 
+#j
+
+for (k in 1:32){
+  S0+2*k
+  S1+2*k
+  
+}
+
+vec_S1=rep(0,n+1)
+vec_S1[1]=S1
+for(i in 2:(n+1)){
+  vec_S1[i]=as.double(a*vec_S1[i-1])%%m
+}
+vec_S1=vec_S1/m
+vec_S1<-vec_S1[-1]
+plot(vec_S1)
+hist(vec_S1)
+
+## SELECCIONAR j
+
+
+
+
+
+
+
+
+
+
+
+
+
+## EDO. BAJA CALIFORNIA
+
+for (k in 1:32){
+  S0+2*k
+  S1+2*k
+  
+}
+
+#i
+## simular 320 000 i y j
+
+# Simular  uniformes
+vec_S0=rep(0,n+1)
+vec_S0[1]=S0
+for(i in 2:(n+1)){
+  vec_S0[i]=as.double(a*vec_S0[i-1])%%m
+}
+vec_S0=vec_S0/m
+vec_S0<-vec_S0[-1]
+plot(vec_S0)
+hist(vec_S0)
+
+# for para cada estado, para que las semillas 
+#j
+
+for (k in 1:32){
+  S0+2*k
+  S1+2*k
+  
+}
+
+vec_S1=rep(0,n+1)
+vec_S1[1]=S1
+for(i in 2:(n+1)){
+  vec_S1[i]=as.double(a*vec_S1[i-1])%%m
+}
+vec_S1=vec_S1/m
+vec_S1<-vec_S1[-1]
+plot(vec_S1)
+hist(vec_S1)
